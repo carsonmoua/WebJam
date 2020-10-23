@@ -7,6 +7,12 @@ require('dotenv').config();
 const app = express();
 const port = 5000;
 
+const io = require('socket.io')(5000)
+
+io.on('connection', socket => {
+    socket.emit('chat-message', 'Welcome Stranger')
+})
+
 app.use(cors());
 app.use(express.json());
 
